@@ -1,0 +1,106 @@
+* {
+  font-family: 'Archivo', sans-serif;
+  margin: 0;
+  text-decoration: none;
+  overflow-y: scroll;
+}
+#bgImage {
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  background-image: url('./Citrus.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+}
+#navbarDiv {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  position: fixed;
+  padding-bottom: 1.5%;
+  z-index: 100;
+}
+#logo {
+  width: 150px;
+  height: auto;
+}
+#navBarList {
+  background-color: white;
+  border-bottom: 5px solid white;
+  list-style: none;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  z-index: 1000;
+  float: right;
+}
+#navBar li {
+  display: inline-block;
+}
+.test {
+  float: left;
+  padding-top: 1.75%;
+  color: black;
+  font-family: Arial;
+}
+.navBarText {
+  float: right;
+  padding-top: 2%;
+  padding-right: 20px;
+}
+.navBarButton {
+  color: #B7B7B4;
+  text-decoration: none;
+  font-family: Arial;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 100px;
+  padding: 10px;
+  height: auto;
+  font-size: 15px;
+}
+#login {
+  text-decoration: none;
+  color: #FF8B00;
+  font-weight: bold;
+}
+a {
+  color: black;
+}
+#body {
+  padding-top: 3%;
+  color: black;
+  text-align: center;
+}
+#searchTerm {
+  border-radius: 5px;
+  border: 0px;
+  font-size: 15px;
+  padding: 10px;
+  width: 80%;
+}
+#header {
+  font-size: 20px;
+  font-weight: bold;
+  flex-direction: row;
+}
+#searchButton {
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+#results {
+  padding-top: 10px;
+  width: 80%;
+  margin-left: 8%;
+  text-align: center;
+}
