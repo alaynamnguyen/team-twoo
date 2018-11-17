@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Math Team",
+		"keywords": ["math", "geometry", "circle"],
+		"description": "This is a math club or something."
+	},
+	{
+		"name": "Filipino Club",
+		"keywords": ["foreign", "language", "foreign language"]
+	},
+	{
+		"name": "Computer Science Club",
+		"keywords": ["technology", "computer", "science"]
+	}
+]
+
