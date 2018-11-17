@@ -6,4 +6,7 @@ Three components:
   - Search
     - Look through Index for a list of closest matches
   - Index (Just a JSON dump)
+    - Stores team/club name
+    - Keywords
+    - Schedule
 
