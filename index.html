@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>School Clubs</title>
+    <link rel="stylesheet" type="text/css" href="SchoolClubs.css" />
+  </head>
+  <body>
+    <div id="navbarDiv">
+        <ul class="navBarList">
+      <div class="test">
+        <a href="#">
+        <img id="logo" src="./logo.png" />
+        <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+        </a>
+      </div>
+      <div class="navBarText" id="loginDiv">
+        <a id="login" routerLink="/login">Log In</a>
+      </div>
+      <div class="navBarText">
+      </div>
+        </ul>
+    </div>
+    <div id="bgImage">
+      <div id="body">
+        <div id="header">
+            <input type="text" value="" id="searchTerm" placeholder="Search..."/>
+            <button id="searchButton" onclick="search()" >Find</button>
+
+        </div>
+
+      </div>
+    </div>
+  </body>
+  <script>
+  var term = document.getElementById("searchTerm");
+
+  var data = [
+    {
+      club: "computer science",
+      keywords: ['computer science', 'computer', 'science', 'code', 'technology', 'math'],
+      size: 100
+    },
+    {
+      club: 'math',
+      keywords: ['math', 'computer', 'geometry', 'calculus', 'physics', 'algebra'],
+      size: 50
+    },
+    {
+      club: 'engineering',
+      keywords: ['computer science', 'math', 'hardware', 'science', 'code', 'physics'],
+      size: 75
+    },
+    {
+      club: 'computer',
+      keywords: ['computer science', 'computer', 'math', 'hardware', 'science', 'code'],
+      size: 75
+    },
+    {
+      club: 'service',
+      keywords: ['community', 'service', 'help'],
+      size: 80
+    },
+  ]
+
+  var results = [];
+
+  function search() {
+    for(var i = 0; i < data.length; i++) {
+      results[i] = {
+        club: data[i],
+        count: 0
+      }
+      for(var j = 0; j < data[i].keywords.length; j++) {
+        if(data[i].keywords.includes(term.value)) {
+          results[i].count++;
+        }
+      }
+    }
+    console.log(results);
+    results.sort((a, b) => b.count - a.count);
+    console.log(results);
+  }
+
+  </script>
+</html>
