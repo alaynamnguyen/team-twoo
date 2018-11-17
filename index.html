@@ -7,13 +7,11 @@
     <div id="navbarDiv">
         <ul class="navBarList">
       <div class="test">
-        <a href="#">
         <img id="logo" src="./logo.png" />
         <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
-        </a>
       </div>
       <div class="navBarText" id="loginDiv">
-        <a id="login" routerLink="/login">Log In</a>
+        <p id="login">BlackLine Hackathon</p>
       </div>
       <div class="navBarText">
       </div>
@@ -23,61 +21,119 @@
       <div id="body">
         <div id="header">
             <input type="text" value="" id="searchTerm" placeholder="Search..."/>
-            <button id="searchButton" onclick="search()" >Find</button>
-
+            <button id="searchButton" onclick="find()" >Find</button>
         </div>
-
+        <div id="results">
+        </div>
       </div>
     </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
   var term = document.getElementById("searchTerm");
+  var results = document.getElementById("results")
 
   var data = [
     {
-      club: "computer science",
+      name: "computer science",
       keywords: ['computer science', 'computer', 'science', 'code', 'technology', 'math'],
-      size: 100
+      size: 100,
+      description: 'The Computer Science Club was formed to generate, advance, and share students\' interests in the Computer and Information Sciences and Technology. The club meets weekly, and the club members decide on activities to be pursued in any particular academic year.'
     },
     {
-      club: 'math',
+      name: 'math',
       keywords: ['math', 'computer', 'geometry', 'calculus', 'physics', 'algebra'],
-      size: 50
+      size: 50,
+      description: 'The Purpose of Math Club is to develop students\' level of Math skills and knowledge. This will be accomplished by using games, activities, and mock competitions. Students will cooperatively work to complete Logic and Math Puzzles.'
     },
     {
-      club: 'engineering',
+      name: 'engineering',
       keywords: ['computer science', 'math', 'hardware', 'science', 'code', 'physics'],
-      size: 75
+      size: 75,
+      description: 'The Engineering Club introduces students to the modern concepts of engineering through demonstrations, build projects, and hosting of engaging speakers. The club\'s goal is to educate students and promote interest in the field of engineering.'
     },
     {
-      club: 'computer',
+      name: 'computer',
       keywords: ['computer science', 'computer', 'math', 'hardware', 'science', 'code'],
-      size: 75
+      size: 75,
+      description: 'Computer club is for students interested in using the computer and various software packages from drawing and designing in 2D & 3D to completing animation, graphics, 2D or 3D scanning and 3D printing or even just completing computer generated projects for classes or other clubs.'
     },
     {
-      club: 'service',
+      name: 'service',
       keywords: ['community', 'service', 'help'],
-      size: 80
+      size: 80,
+      description: 'A service club or service organization is a voluntary non-profit organization where members meet regularly to perform charitable works either by direct hands-on efforts or by raising money for other organizations.'
     },
+    {
+      name: "spanish",
+      keywords: ['spanish', 'language'],
+      size: 100,
+      description: 'The Spanish Club is an environment outside of the classroom where those who have a passion for Spanish-speaking culture can get together, participate in activities and meet other like-minded DU students. Creative Writing Contests: Share your creativity by writing in Spanish, both in prose and in verse.'
+    },
+
   ]
 
-  var results = [];
+  $.getJSON('https://raw.githubusercontent.com/alaynamnguyen/team-twoo/master/clubs.json', (deets) => {
+    data = data.concat(deets);
+  })
+
+
 
   function search() {
+    console.log(data);
+    var results = [];
     for(var i = 0; i < data.length; i++) {
       results[i] = {
         club: data[i],
         count: 0
       }
       for(var j = 0; j < data[i].keywords.length; j++) {
-        if(data[i].keywords.includes(term.value)) {
-          results[i].count++;
+        console.log("JSON data: " + data[i].keywords)
+        if(data[i].keywords[j] != null) {
+          if(term.value.toUpperCase().includes(data[i].keywords[j].toUpperCase())) {
+            results[i].count++;
+          }
         }
       }
     }
-    console.log(results);
     results.sort((a, b) => b.count - a.count);
-    console.log(results);
+    return results;
+  }
+
+  function display(array) {
+    while(results.hasChildNodes()) {
+      results.removeChild(results.lastChild);
+    }
+    for(var i = 0; i < array.length; i++) {
+      console.log(array[i].club.name)
+      console.log(array[i].club.size)
+      console.log(array[i].club.description)
+    }
+      for(var i = 0; i < array.length; i++) {
+        if(array[i].count == 0) {
+          break;
+        }
+        let element = document.createElement("div");
+        element.innerHTML += "<div><div class='item'><span class='orangeTerm'>Club: </span><span>" + array[i].club.name
+        + "</span></div>" + (array[i].club.description ? ("<div class='item'><span class='orangeTerm'>Description: </span><span>"+ array[i].club.description +"</span></div>"): '') +
+        (array[i].club.size ? ("<div class='item'><span class='orangeTerm'>Size: </span>" + array[i].club.size +"</div>"): '') + "</div>"
+        element.setAttribute("style", "border: 0px; background-color: white; width: 100%; margin-bottom: 10px; border-radius: 10px")
+        var items = document.getElementsByClassName("item");
+        var orangeTerms = document.getElementsByClassName("orangeTerm");
+        results.appendChild(element);
+        console.log(items.length)
+        for(var j = 0; j < items.length; j++) {
+          console.log("items: " + items[j]);
+          items[j].setAttribute("style", "padding-top: 10px; padding-bottom: 10px");
+          orangeTerms[j].setAttribute("style", "font-weight: bold; font: #FF8B00");
+        }
+        console.log('reached');
+      }
+  }
+
+  function find() {
+    let a = search();
+    display(a);
   }
 
   </script>
