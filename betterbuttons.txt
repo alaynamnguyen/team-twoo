@@ -1,0 +1,21 @@
+A More VISUALLY PLeASINg BUTTON(CSS)
+(Use for the find! and join buttons)
+
+button{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  border-radius: 12px;
+  background-color: #b2afaf; 
+  border: none;
+  color: #000000;
+  padding: 11px 12px;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  }
+}
+
+Corresponding HTML Code:
+
+<button type="button">Find!</button>
